@@ -1,0 +1,12 @@
+{
+    "recommendations": [
+        "bmewburn.vscode-intelephense-client",
+        "streetsidesoftware.code-spell-checker",
+        "editorconfig.editorconfig",
+        "usernamehw.errorlens",
+        "yzhang.markdown-all-in-one",
+        "amiralizadeh9480.laravel-extra-intellisense",
+        "ryannaddy.laravel-artisan",
+        "shufo.vscode-blade-formatter"
+    ]
+}

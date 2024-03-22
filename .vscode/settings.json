@@ -1,0 +1,12 @@
+{
+    "php.suggest.basic": false,
+    "php.validate.run": "onType",
+    "editor.rulers": [80, 120],
+    "files.trimFinalNewlines": true,
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "[php]": {
+        "editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+    }
+}
