@@ -2,10 +2,10 @@
 
 ## Prerequisites
 
--   [PHP 8^](https://www.php.net/downloads.php) or [XAMPP](https://www.apachefriends.org/download.html)
--   [Composer](https://getcomposer.org/)
--   [Docker](https://www.docker.com/products/docker-desktop/), for database or [XAMPP](https://www.apachefriends.org/download.html)
--   [Bruno](https://www.usebruno.com/downloads) or other API client
+- [PHP 8^](https://www.php.net/downloads.php) or [XAMPP](https://www.apachefriends.org/download.html)
+- [Composer](https://getcomposer.org/)
+- [Docker](https://www.docker.com/products/docker-desktop/), for database or [XAMPP](https://www.apachefriends.org/download.html)
+- [Bruno](https://www.usebruno.com/downloads) or other API client
 
 ## Setup
 
@@ -84,5 +84,6 @@ The easiest way is to simply download the ZIP containing PHP, unpack it into som
 
 Make sure that these PHP extensions are enabled in php.ini:
 
--   pdo_pgsql
--   fileinfo
+- pdo_pgsql
+- fileinfo
+- xml
