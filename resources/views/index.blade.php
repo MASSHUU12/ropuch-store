@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Nothing to see here</title>
     </head>
-    <body class="antialiased">
+    <body>
         <main>
             <p>Nothing to see here</p>
         </main>
