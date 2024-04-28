@@ -87,3 +87,5 @@ Make sure that these PHP extensions are enabled in php.ini:
 - pdo_pgsql
 - fileinfo
 - xml
+
+On Fedora make sure that `php-mysqli` and `php-pdo` are installed.
