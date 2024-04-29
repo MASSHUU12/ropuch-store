@@ -9,6 +9,8 @@
 
 ## Docs
 
+Laravel [docs](https://laravel.com/docs/).
+
 Information about the first server configuration, startup and communication with the server can be found [here](./docs/SERVER.md).
 
 Database configuration can be found [here](./docs/DATABASE.md).
