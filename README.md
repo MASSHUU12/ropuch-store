@@ -9,6 +9,8 @@
 
 ## Docs
 
+Please read [Contributing Guidelines](./CONTRIBUTING.md) before contributing.
+
 Laravel [docs](https://laravel.com/docs/).
 
 Information about the first server configuration, startup and communication with the server can be found [here](./docs/SERVER.md).
