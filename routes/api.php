@@ -22,3 +22,24 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 });
+
+// Admin test routes
+Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:admin']], function () {
+    Route::get('/admin', function () {
+        return response()->json(['message' => 'Admin route']);
+    });
+});
+
+// Employee test routes
+Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:employee']], function () {
+    Route::get('/employee', function () {
+        return response()->json(['message' => 'Employee route']);
+    });
+});
+
+// User test routes
+Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:user']], function () {
+    Route::get('/user', function () {
+        return response()->json(['message' => 'User route']);
+    });
+});

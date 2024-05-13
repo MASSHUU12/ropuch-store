@@ -1,0 +1,19 @@
+meta {
+  name: Employee ability test
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:8000/api/employee
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
