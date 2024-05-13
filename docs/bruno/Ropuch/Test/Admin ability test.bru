@@ -1,0 +1,19 @@
+meta {
+  name: Admin ability test
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:8000/api/admin
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
