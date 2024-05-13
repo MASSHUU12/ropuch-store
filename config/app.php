@@ -184,6 +184,7 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
         'abilities' => App\Http\Middleware\EnsureUserHasAbility::class,
+        'debug' => App\Http\Middleware\EnsureDebugMode::class,
     ])->toArray(),
 
 ];
