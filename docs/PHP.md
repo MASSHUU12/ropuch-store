@@ -8,8 +8,9 @@ The easiest way is to simply download the ZIP containing PHP, unpack it into som
 
 Make sure that these PHP extensions are enabled in php.ini:
 
-- pdo_pgsql
-- fileinfo
-- xml
+-   pdo_pgsql
+-   fileinfo
+-   xml
+-   php-mbstring
 
-On Fedora make sure that `php-mysqli` and `php-pdo` are installed.
+On Fedora make sure that `php-mysqli`, `php-pdo` and `php-mbstring` are installed.
