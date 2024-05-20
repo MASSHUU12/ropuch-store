@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request)
+    public function register(Request $request, string $role = "user")
     {
         $fields = $request->validate([
             'name' => 'required|string',
@@ -22,7 +22,7 @@ class AuthController extends Controller
             'password' => bcrypt($fields['password'])
         ]);
 
-        $token = $user->createToken('user_token', ['user'])->plainTextToken;
+        $token = $user->createToken('user_token', [$role])->plainTextToken;
 
         $response = [
             'user' => $user,
