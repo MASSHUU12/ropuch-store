@@ -186,5 +186,4 @@ return [
         'abilities' => App\Http\Middleware\EnsureUserHasAbility::class,
         'debug' => App\Http\Middleware\EnsureDebugMode::class,
     ])->toArray(),
-
 ];
