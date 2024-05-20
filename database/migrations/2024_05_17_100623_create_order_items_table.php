@@ -15,9 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId("order_id");
             $table->foreign("order_id")->references("id")->on("orders");
+            $table->foreignId("product_id");
+            $table->foreign("product_id")->references("id")->on("products");
             $table->smallInteger("quantity");
             $table->decimal("price", 10, 2);
-            $table->timestamps();
         });
     }
 
