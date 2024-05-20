@@ -187,4 +187,15 @@ return [
         'debug' => App\Http\Middleware\EnsureDebugMode::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Setup Complete
+    |--------------------------------------------------------------------------
+    |
+    | This value determines if the application setup has been completed.
+    | This is used to determine if the setup route should be available.
+    |
+    */
+
+    'setup_complete' => false
 ];
