@@ -23,6 +23,8 @@ class SetupController extends Controller
 
         $response = (new AuthController())->register($request, "admin");
 
+        // TODO: Add admin to the employees table
+
         if ($response->getStatusCode() === 201) {
             $setup_complete->value = 'true';
             $setup_complete->save();
