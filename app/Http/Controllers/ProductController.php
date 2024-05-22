@@ -60,6 +60,16 @@ class ProductController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $result = Product::destroy($id);
+
+        if ($result === 0) {
+            return response([
+                'message' => 'Product not found.'
+            ], 404);
+        }
+
+        return response([
+            'message' => 'Product deleted.'
+        ]);
     }
 }
