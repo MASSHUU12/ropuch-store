@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -41,17 +43,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function employee()
+    public function employee(): HasOne
     {
         return $this->hasOne(Employee::class);
     }
 
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
-    public function shoppingCarts()
+    public function shoppingCarts(): HasMany
     {
         return $this->hasMany(ShoppingCart::class);
     }
