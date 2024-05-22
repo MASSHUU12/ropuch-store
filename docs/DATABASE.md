@@ -10,27 +10,31 @@ so you can be sure that a service will work exactly the same way as others.
 
 Regardless of what you choose, the effect will be similar, both solutions use `MariaDB` and `phpMyAdmin`.
 
-If you want to reset the database to its initial state use `php artisan migrate:fresh`.
+### Common commands
 
-<!-- php artisan db:seed -->
+Restart database to its initial state: `php artisan migrate:fresh`
 
-#### Database via Docker
+Seed database: `php artisan db:seed`
+
+Restart & seed database: `php artisan migrate:fresh --seed`
+
+### Database via Docker
 
 Run `Docker Desktop`.
 
 Web interface is available at http://localhost:8080/.
 
-##### First-time configuration
+#### First-time configuration
 
 1. From the root folder run: `docker compose up`.
 2. Now run `php artisan migrate:fresh` in terminal.
 
-#### Database via XAMPP
+### Database via XAMPP
 
 Run XAMPP Control Panel and enable `MySQL` module,
 optionally you can enable `Apache` module if you want to manage database via web interface.
 
-##### First-time configuration
+#### First-time configuration
 
 1. Enable `Apache` module in XAMPP Control Panel.
 2. Go to http://localhost/phpmyadmin/.
