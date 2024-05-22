@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Employee;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -23,7 +24,11 @@ class SetupController extends Controller
 
         $response = (new AuthController())->register($request, "admin");
 
-        // TODO: Add admin to the employees table
+        Employee::create([
+            'user_id' => $response->original['user']['id'],
+            'joining_date' => now(),
+            'role' => 'admin'
+        ]);
 
         if ($response->getStatusCode() === 201) {
             $setup_complete->value = 'true';
