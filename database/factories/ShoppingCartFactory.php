@@ -17,9 +17,9 @@ class ShoppingCartFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => fake()->numberBetween(1, 256),
-            'product_id' => fake()->numberBetween(1, 100),
-            'quantity' => fake()->numberBetween(1, 10),
+            'user_id' => fake()->numberBetween(1, 32),
+            'product_id' => fake()->numberBetween(1, 64),
+            'quantity' => fake()->numberBetween(1, 16),
         ];
     }
 }
