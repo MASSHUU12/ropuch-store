@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,25 +24,9 @@ Route::post('/setup', [SetupController::class, '__invoke']);
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-});
 
-// Admin test routes
-Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:admin']], function () {
-    Route::get('/admin', function () {
-        return response()->json(['message' => 'Admin route']);
-    });
-});
-
-// Employee test routes
-Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:employee']], function () {
-    Route::get('/employee', function () {
-        return response()->json(['message' => 'Employee route']);
-    });
-});
-
-// User test routes
-Route::group(['middleware' => ['debug', 'auth:sanctum', 'abilities:user']], function () {
-    Route::get('/user', function () {
-        return response()->json(['message' => 'User route']);
+    // Routes for admins and employees
+    Route::group(['middleware' => ['abilities:admin,manager']], function () {
+        Route::post('/product', [ProductController::class, 'store']);
     });
 });
