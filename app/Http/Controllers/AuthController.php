@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function register(Request $request, string $role = "user")
+    public function register(Request $request, string $role = "user"): Response
     {
         $fields = $request->validate([
             'name' => 'required|string',
@@ -32,16 +33,16 @@ class AuthController extends Controller
         return response($response, 201);
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): Response
     {
         $request->user()->currentAccessToken()->delete();
 
-        return [
+        return response([
             'message' => 'Logged out.'
-        ];
+        ]);
     }
 
-    public function login(Request $request)
+    public function login(Request $request): Response
     {
         $fields = $request->validate([
             'email' => 'required|string',
@@ -56,7 +57,9 @@ class AuthController extends Controller
             ], 401);
         }
 
-        $token = $user->createToken('user_token', ['user'])->plainTextToken;
+        $employee = $user->employee;
+        $role = $employee === null ? "user" : $employee->role;
+        $token = $user->createToken('user_token', [$role])->plainTextToken;
 
         $response = [
             'user' => $user,
