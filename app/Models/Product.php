@@ -16,4 +16,9 @@ class Product extends Model
         'currency',
         'quantity'
     ];
+
+    public function shoppingCarts()
+    {
+        return $this->hasMany(ShoppingCart::class);
+    }
 }
