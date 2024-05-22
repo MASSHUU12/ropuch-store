@@ -17,7 +17,7 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'order_id' => fake()->unique()->numberBetween(1, 256),
+            'order_id' => fake()->unique()->numberBetween(1, 128),
             'payment_method' => fake()->randomElement(['credit_card', 'paypal', 'stripe']),
             'transaction_id' => fake()->unique()->uuid,
             'amount' => fake()->randomFloat(2, 1, 1000),
