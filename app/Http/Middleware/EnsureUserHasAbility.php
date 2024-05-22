@@ -13,9 +13,13 @@ class EnsureUserHasAbility
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next, string $ability): Response
+    public function handle(Request $request, Closure $next, string $str_abilities): Response
     {
-        if ($request->user()->tokenCan($ability)) return $next($request);
+        $abilities = explode(',', $str_abilities);
+
+        foreach ($abilities as $ability) {
+            if ($request->user()->tokenCan($ability)) return $next($request);
+        }
 
         return response()->json(['message' => 'Unauthorized'], 403);
     }
