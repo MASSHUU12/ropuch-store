@@ -28,5 +28,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Routes for admins and employees
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
         Route::post('/product', [ProductController::class, 'store']);
+        Route::delete('/product/{id}', [ProductController::class, 'destroy']);
     });
 });
