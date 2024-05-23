@@ -1,0 +1,26 @@
+meta {
+  name: Update user
+  type: http
+  seq: 4
+}
+
+put {
+  url: http://localhost:8000/api/user/5
+  body: formUrlEncoded
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 3|0eWXijHUpSsSPE8W82kCA7ZrkGAu0l5z8S2k5XVvc2fb7cbe
+}
+
+body:form-urlencoded {
+  name: John Doe
+  email: awesome@example.com
+  password: Zaq12wsx
+  password_confirmation: Zaq12wsx
+}
