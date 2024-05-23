@@ -55,7 +55,23 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fields = $request->validate([
+            'user_id' => 'exists:users,id',
+            'joining_date' => 'date',
+            'role' => 'string|in:admin,manager,employee'
+        ]);
+
+        $employee = Employee::find($id);
+
+        if ($employee === null) {
+            return response([
+                'message' => 'Employee not found.'
+            ], 404);
+        }
+
+        $employee->update($fields);
+
+        return response($employee);
     }
 
     /**
