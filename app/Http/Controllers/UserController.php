@@ -44,6 +44,11 @@ class UserController extends Controller
         return response($user);
     }
 
+    public function show_current(Request $request)
+    {
+        return response($request->user());
+    }
+
     /**
      * Update the specified resource in storage.
      */
