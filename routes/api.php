@@ -5,7 +5,6 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
-use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,6 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     // Routes for all employees
     Route::group(['middleware' => ['abilities:admin,manager,employee']], function () {
+        Route::get('/users', [UserController::class, 'index']);
         Route::get('/user/{id}', [UserController::class, 'show']);
     });
 });
