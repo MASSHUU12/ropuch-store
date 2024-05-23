@@ -52,7 +52,25 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string|unique:products,name',
+            'description' => 'string',
+            'price' => 'decimal:2',
+            'currency' => 'string|max:3|min:3|uppercase',
+            'quantity' => 'integer|min:1'
+        ]);
+
+        $product = Product::find($id);
+
+        if ($product === null) {
+            return response([
+                'message' => 'Product not found.'
+            ], 404);
+        }
+
+        $product->update($fields);
+
+        return response($product);
     }
 
     /**
