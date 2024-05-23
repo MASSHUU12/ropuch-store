@@ -25,9 +25,10 @@ Route::post('/setup', [SetupController::class, '__invoke']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
-    // Routes for admins and employees
+    // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
         Route::post('/product', [ProductController::class, 'store']);
+        Route::put('/product/{id}', [ProductController::class, 'update']);
         Route::delete('/product/{id}', [ProductController::class, 'destroy']);
     });
 });
