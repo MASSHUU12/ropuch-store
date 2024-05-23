@@ -29,6 +29,7 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::put('/user', [AuthController::class, 'update_current']);
 
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
@@ -47,5 +48,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['middleware' => ['abilities:admin,manager,employee']], function () {
         Route::get('/users', [UserController::class, 'index']);
         Route::get('/user/{id}', [UserController::class, 'show']);
+        Route::put('/user/{id}', [UserController::class, 'update']);
     });
 });
