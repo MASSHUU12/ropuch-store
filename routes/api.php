@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/user', [UserController::class, 'show_current']);
     Route::put('/user', [UserController::class, 'update_current']);
+    Route::delete('/user', [UserController::class, 'destroy_current']);
 
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
@@ -50,5 +51,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/users', [UserController::class, 'index']);
         Route::get('/user/{id}', [UserController::class, 'show']);
         Route::put('/user/{id}', [UserController::class, 'update']);
+        Route::delete('/user/{id}', [UserController::class, 'destroy']);
     });
 });
