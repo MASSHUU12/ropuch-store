@@ -1,0 +1,27 @@
+meta {
+  name: Create product
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:8000/api/product
+  body: formUrlEncoded
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
+
+body:form-urlencoded {
+  name: Masło
+  description: masło masło
+  price: 69.00
+  currency: PLN
+  quantity: 128
+}
