@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::post('/product', [ProductController::class, 'store']);
         Route::put('/product/{id}', [ProductController::class, 'update']);
         Route::delete('/product/{id}', [ProductController::class, 'destroy']);
+
+        Route::get('/employee/{id}', [EmployeeController::class, 'show']);
     });
 });
