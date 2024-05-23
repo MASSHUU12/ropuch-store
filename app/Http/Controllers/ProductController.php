@@ -44,7 +44,15 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $product = Product::find($id);
+
+        if ($product === null) {
+            return response([
+                'message' => 'Product not found.'
+            ], 404);
+        }
+
+        return response($product);
     }
 
     /**
