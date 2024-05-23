@@ -79,7 +79,7 @@ class UserController extends Controller
 
     public function update_current(Request $request)
     {
-        $this->update($request, $request->user()->id);
+        return $this->update($request, $request->user()->id);
     }
 
     /**
@@ -87,6 +87,23 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::find($id);
+
+        if ($user === null) {
+            return response([
+                'message' => 'User not found.'
+            ], 404);
+        }
+
+        $user->delete();
+
+        return response([
+            'message' => 'User deleted.'
+        ]);
+    }
+
+    public function destroy_current(Request $request)
+    {
+        return $this->destroy($request->user()->id);
     }
 }
