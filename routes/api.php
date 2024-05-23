@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('/product/{id}', [ProductController::class, 'update']);
         Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
+        Route::post('/employee', [EmployeeController::class, 'store']);
         Route::get('/employees', [EmployeeController::class, 'index']);
         Route::get('/employee/{id}', [EmployeeController::class, 'show']);
     });
