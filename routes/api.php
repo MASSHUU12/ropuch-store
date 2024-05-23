@@ -18,12 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Public routes
-Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/setup', [SetupController::class, '__invoke']);
+Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('/product/{id}', [ProductController::class, 'show']);
 Route::get('/products', [ProductController::class, 'index']);
+Route::get('/product/{id}', [ProductController::class, 'show']);
 
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::put('/product/{id}', [ProductController::class, 'update']);
         Route::delete('/product/{id}', [ProductController::class, 'destroy']);
 
+        Route::get('/employees', [EmployeeController::class, 'index']);
         Route::get('/employee/{id}', [EmployeeController::class, 'show']);
     });
 });
