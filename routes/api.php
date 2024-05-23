@@ -29,7 +29,8 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
-    Route::put('/user', [AuthController::class, 'update_current']);
+    Route::get('/user', [UserController::class, 'show_current']);
+    Route::put('/user', [UserController::class, 'update_current']);
 
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
