@@ -25,7 +25,13 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $fields = $request->validate([
+            'user_id' => 'required|exists:users,id',
+            'joining_date' => 'required|date',
+            'role' => 'required|string|in:admin,manager,employee'
+        ]);
+
+        return response(Employee::create($fields), 201);
     }
 
     /**
