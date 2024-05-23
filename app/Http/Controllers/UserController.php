@@ -49,7 +49,32 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $fields = $request->validate([
+            'name' => 'string',
+            'email' => 'email|unique:users,email',
+            'password' => 'string|min:8|confirmed'
+        ]);
+
+        $user = User::find($id);
+
+        if ($user === null) {
+            return response([
+                'message' => 'User not found.'
+            ], 404);
+        }
+
+        if (isset($fields['password'])) {
+            $fields['password'] = bcrypt($fields['password']);
+        }
+
+        $user->update($fields);
+
+        return response($user);
+    }
+
+    public function update_current(Request $request)
+    {
+        $this->update($request, $request->user()->id);
     }
 
     /**
