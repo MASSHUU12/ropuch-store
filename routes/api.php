@@ -4,6 +4,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use App\Models\Employee;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/employee/{id}', [EmployeeController::class, 'show']);
         Route::put('/employee/{id}', [EmployeeController::class, 'update']);
         Route::delete('/employee/{id}', [EmployeeController::class, 'destroy']);
+    });
+
+    // Routes for all employees
+    Route::group(['middleware' => ['abilities:admin,manager,employee']], function () {
+        Route::get('/user/{id}', [UserController::class, 'show']);
     });
 });
