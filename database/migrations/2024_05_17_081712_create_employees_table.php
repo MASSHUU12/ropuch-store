@@ -14,8 +14,9 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->foreignId("user_id");
-            $table->foreign("user_id")->references("id")->on("users");
+            $table->foreignId("user_id")
+                ->constrained('users')
+                ->onDelete('cascade');
             $table->dateTime("joining_date");
             $table->string("role", 64);
             $table->timestamps();
