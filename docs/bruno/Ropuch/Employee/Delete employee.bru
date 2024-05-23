@@ -1,11 +1,11 @@
 meta {
-  name: Admin ability test
+  name: Delete employee
   type: http
-  seq: 1
+  seq: 5
 }
 
-get {
-  url: http://localhost:8000/api/admin
+delete {
+  url: http://localhost:8000/api/employee/1
   body: none
   auth: bearer
 }

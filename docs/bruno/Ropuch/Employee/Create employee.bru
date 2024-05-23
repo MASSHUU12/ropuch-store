@@ -1,0 +1,25 @@
+meta {
+  name: Create employee
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:8000/api/employee
+  body: formUrlEncoded
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
+
+body:form-urlencoded {
+  user_id: 2
+  joining_date: 1998-01-01 00:00:00
+  role: employee
+}

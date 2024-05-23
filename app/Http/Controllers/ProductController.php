@@ -13,7 +13,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $page = $request->query('page', 1);
-        $limit = $request->query('limit', 16);
+        $limit = min($request->query('limit', 16), 256);
 
         $products = Product::paginate($limit, ['*'], 'page', $page);
 
