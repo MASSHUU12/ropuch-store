@@ -20,10 +20,8 @@ class CreateOrderDetailsTable extends Migration
             $table->string('buyer_email');
             $table->string('delivery_address');
             $table->string('delivery_city');
-            $table->string('delivery_state');
             $table->string('delivery_zip');
             $table->string('delivery_country');
-            $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders')->onDelete('cascade');
         });
