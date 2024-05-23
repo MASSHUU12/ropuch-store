@@ -20,4 +20,9 @@ class OrderDetails extends Model
         'delivery_zip',
         'delivery_country',
     ];
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }
