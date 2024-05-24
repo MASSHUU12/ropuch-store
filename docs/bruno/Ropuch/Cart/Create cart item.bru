@@ -1,0 +1,24 @@
+meta {
+  name: Create cart item
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8000/api/cart
+  body: formUrlEncoded
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
+
+body:form-urlencoded {
+  product_id: 1
+  quantity: 1
+}

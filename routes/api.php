@@ -4,6 +4,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,16 @@ Route::get('/product/{id}', [ProductController::class, 'show']);
 // Protected routes
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+
     Route::get('/user', [UserController::class, 'show_current']);
     Route::put('/user', [UserController::class, 'update_current']);
     Route::delete('/user', [UserController::class, 'destroy_current']);
+
+    Route::get('/cart', [ShoppingCartController::class, 'index']);
+    Route::post('/cart', [ShoppingCartController::class, 'store']);
+    Route::put('/cart/{id}', [ShoppingCartController::class, 'update']);
+    Route::delete('/cart', [ShoppingCartController::class, 'destroy_all']);
+    Route::delete('/cart/{id}', [ShoppingCartController::class, 'destroy']);
 
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
