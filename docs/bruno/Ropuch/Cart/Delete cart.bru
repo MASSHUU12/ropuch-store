@@ -1,0 +1,19 @@
+meta {
+  name: Delete cart
+  type: http
+  seq: 4
+}
+
+delete {
+  url: http://localhost:8000/api/cart/131
+  body: none
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
