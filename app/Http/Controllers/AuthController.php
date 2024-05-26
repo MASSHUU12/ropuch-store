@@ -17,10 +17,13 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed'
         ]);
 
+        $salt = bin2hex(random_bytes(random_int(64, 128)));
+
         $user = User::create([
             'name' => $fields['name'],
             'email' => $fields['email'],
-            'password' => bcrypt($fields['password'])
+            'salt' => $salt,
+            'password' => bcrypt($fields['password'], ['salt' => $salt]),
         ]);
 
         $token = $user->createToken('user_token', [$role])->plainTextToken;
