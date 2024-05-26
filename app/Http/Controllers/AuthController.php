@@ -17,6 +17,8 @@ class AuthController extends Controller
             'password' => 'required|string|confirmed'
         ]);
 
+        // Generates a random salt. The salt is a hexadecimal string.
+        // The length of the salt is between 128 and 256 characters (64 to 128 bytes).
         $salt = bin2hex(random_bytes(random_int(64, 128)));
 
         $user = User::create([
