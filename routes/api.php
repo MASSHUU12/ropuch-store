@@ -3,6 +3,7 @@
 use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserController;
@@ -41,6 +42,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/cart', [ShoppingCartController::class, 'destroy_all']);
     Route::delete('/cart/{id}', [ShoppingCartController::class, 'destroy']);
 
+    Route::post('/order', [OrderController::class, 'store']);
+    Route::get('/user/orders', [OrderController::class, 'index_user']);
+    Route::get('/user/order/{id}', [OrderController::class, 'show_user']);
+
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
         Route::post('/product', [ProductController::class, 'store']);
@@ -60,5 +65,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         Route::get('/user/{id}', [UserController::class, 'show']);
         Route::put('/user/{id}', [UserController::class, 'update']);
         Route::delete('/user/{id}', [UserController::class, 'destroy']);
+
+        Route::get('/orders', [OrderController::class, 'index']);
+        Route::get('/order/{id}', [OrderController::class, 'show']);
     });
 });
