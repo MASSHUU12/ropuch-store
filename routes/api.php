@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShoppingCartController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -42,7 +43,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/cart', [ShoppingCartController::class, 'destroy_all']);
     Route::delete('/cart/{id}', [ShoppingCartController::class, 'destroy']);
 
-    Route::post('/order', [OrderController::class, 'store']);
+    Route::post('/order', [ShopController::class, 'place_order']);
     Route::get('/user/orders', [OrderController::class, 'index_user']);
     Route::get('/user/order/{id}', [OrderController::class, 'show_user']);
 
