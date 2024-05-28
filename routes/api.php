@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
     Route::post('/order', [ShopController::class, 'place_order']);
     Route::get('/user/orders', [OrderController::class, 'index_user']);
+    Route::delete('/order/{id}', [ShopController::class, 'cancel_order']);
     Route::get('/user/order/{id}', [OrderController::class, 'show_user']);
 
     // Routes for admins and managers
