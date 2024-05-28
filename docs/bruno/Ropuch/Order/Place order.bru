@@ -1,0 +1,53 @@
+meta {
+  name: Place order
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:8000/api/order
+  body: json
+  auth: bearer
+}
+
+headers {
+  Accept: application/json
+}
+
+auth:bearer {
+  token: 
+}
+
+body:json {
+  {
+    "products": [
+      {
+        "id": 1,
+        "quantity": 5
+      },
+      {
+        "id": 2,
+        "quantity": 5
+      }
+    ],
+    "buyer_name": "John Doe",
+    "buyer_email": "example@example.com",
+    "delivery_address": "sfasfa 2",
+    "delivery_city": "Hell",
+    "delivery_zip": "12-345",
+    "delivery_country": "AAA"
+  }
+}
+
+body:form-urlencoded {
+  products.0.id: 1
+  products.0.quantity: 5
+  products.1.id: 2
+  products.1.quantity: 5
+  buyer_name: John Doe
+  buyer_email: example@example.com
+  delivery_address: asfafa
+  delivery_city: Hell
+  delivery_zip: 12-345
+  delivery_country: AAAA
+}
