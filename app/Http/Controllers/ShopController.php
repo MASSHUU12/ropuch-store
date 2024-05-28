@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -86,6 +87,38 @@ class ShopController extends Controller
             'message' => 'Order placed successfully',
             'total_price' => $total_price,
             'payment_url' => 'https://example.com/payments/checkout?order_id=' . $order->id,
+        ]);
+    }
+
+    public function cancel_order(Request $request, $id)
+    {
+        $user = User::find(auth()->id());
+        $order = $user->orders()->find($id);
+
+        if (!$order) {
+            return response()->json([
+                'message' => 'Order not found',
+            ], 404);
+        }
+
+        if ($order->status !== 'pending') {
+            return response()->json([
+                'message' => 'Order cannot be cancelled',
+            ], 400);
+        }
+
+        $order->status = 'cancelled';
+        $order->save();
+
+        // Increase the quantity of the products in the database
+        foreach ($order->orderItems as $orderItem) {
+            $product = Product::find($orderItem->product_id);
+            $product->quantity += $orderItem->quantity;
+            $product->save();
+        }
+
+        return response()->json([
+            'message' => 'Order cancelled successfully',
         ]);
     }
 }
