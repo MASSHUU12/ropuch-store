@@ -3,33 +3,50 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use App\Models\User;
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderItemController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index(Request $request, string $id)
     {
         $page = $request->query('page', 1);
         $limit = min($request->query('limit', 16), 256);
 
-        $orders = Order::paginate($limit, ['*'], 'page', $page);
+        $order = Order::find($id);
 
-        return response($orders);
+        if ($order === null) {
+            return response([
+                'message' => 'Order not found.'
+            ], 404);
+        }
+
+        $items = $order->orderItems()->paginate($limit, ['*'], 'page', $page);
+
+        return response($items);
     }
 
-    public function index_user(Request $request)
+    public function index_user(Request $request, string $id)
     {
         $page = $request->query('page', 1);
         $limit = min($request->query('limit', 16), 256);
 
         $user = User::find(auth()->user()->id);
-        $orders = $user->orders()->paginate($limit, ['*'], 'page', $page);
+        $order = $user->orders()->find($id);
 
-        return response($orders);
+        if ($order === null) {
+            return response([
+                'message' => 'Order not found.'
+            ], 404);
+        }
+
+        $items = $order->orderItems()->paginate($limit, ['*'], 'page', $page);
+
+        return response($items);
     }
 
     /**
@@ -45,29 +62,29 @@ class OrderController extends Controller
      */
     public function show(string $id)
     {
-        $order = Order::find($id);
+        $item = OrderItem::find($id);
 
-        if ($order === null) {
+        if ($item === null) {
             return response([
-                'message' => 'Order not found.'
+                'message' => 'Order item not found.'
             ], 404);
         }
 
-        return response($order);
+        return response($item);
     }
 
     public function show_user(string $id)
     {
         $user = User::find(auth()->user()->id);
-        $order = $user->orders()->find($id);
+        $item = $user->orders()->find($id);
 
-        if ($order === null) {
+        if ($item === null) {
             return response([
-                'message' => 'Order not found.'
+                'message' => 'Order item not found.'
             ], 404);
         }
 
-        return response($order);
+        return response($item);
     }
 
     /**

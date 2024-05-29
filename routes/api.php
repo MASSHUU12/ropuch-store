@@ -4,6 +4,7 @@ use App\Http\Controllers\SetupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ShoppingCartController;
@@ -48,6 +49,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::delete('/order/{id}', [ShopController::class, 'cancel_order']);
     Route::get('/user/order/{id}', [OrderController::class, 'show_user']);
 
+    Route::get('/user/order/item/{id}', [OrderItemController::class, 'show_user']);
+    Route::get('/user/order/{id}/items', [OrderItemController::class, 'index_user']);
+
     // Routes for admins and managers
     Route::group(['middleware' => ['abilities:admin,manager']], function () {
         Route::post('/product', [ProductController::class, 'store']);
@@ -70,5 +74,8 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         Route::get('/orders', [OrderController::class, 'index']);
         Route::get('/order/{id}', [OrderController::class, 'show']);
+
+        Route::get('/order/item/{id}', [OrderItemController::class, 'show']);
+        Route::get('/order/{id}/items', [OrderItemController::class, 'index']);
     });
 });
