@@ -1,11 +1,11 @@
 meta {
-  name: Show employees
+  name: Users
   type: http
   seq: 2
 }
 
 get {
-  url: http://localhost:8000/api/employees?page=1&limit=16
+  url: http://localhost:8000/api/users?page=1&limit=16
   body: none
   auth: bearer
 }
@@ -17,8 +17,4 @@ query {
 
 headers {
   Accept: application/json
-}
-
-auth:bearer {
-  token: 
 }

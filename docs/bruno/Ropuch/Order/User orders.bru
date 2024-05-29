@@ -1,11 +1,11 @@
 meta {
-  name: Show users
+  name: User orders
   type: http
   seq: 2
 }
 
 get {
-  url: http://localhost:8000/api/users?page=1&limit=16
+  url: http://localhost:8000/api/user/orders?page=1&limit=16
   body: none
   auth: bearer
 }
@@ -17,4 +17,8 @@ query {
 
 headers {
   Accept: application/json
+}
+
+auth:bearer {
+  token: 
 }

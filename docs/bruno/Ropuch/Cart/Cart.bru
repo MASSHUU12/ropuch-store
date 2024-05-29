@@ -1,11 +1,11 @@
 meta {
-  name: Delete current user
+  name: Cart
   type: http
-  seq: 7
+  seq: 1
 }
 
-delete {
-  url: http://localhost:8000/api/user
+get {
+  url: http://localhost:8000/api/cart
   body: none
   auth: bearer
 }

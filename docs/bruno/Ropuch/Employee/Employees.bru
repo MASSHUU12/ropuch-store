@@ -1,13 +1,18 @@
 meta {
-  name: Show order
+  name: Employees
   type: http
-  seq: 4
+  seq: 2
 }
 
 get {
-  url: http://localhost:8000/api/order/1
+  url: http://localhost:8000/api/employees?page=1&limit=16
   body: none
   auth: bearer
+}
+
+query {
+  page: 1
+  limit: 16
 }
 
 headers {

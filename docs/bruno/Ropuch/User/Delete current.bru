@@ -1,11 +1,11 @@
 meta {
-  name: Show user order item
+  name: Delete current
   type: http
-  seq: 3
+  seq: 7
 }
 
-get {
-  url: http://localhost:8000/api/user/order/item/1
+delete {
+  url: http://localhost:8000/api/user
   body: none
   auth: bearer
 }

@@ -1,11 +1,11 @@
 meta {
-  name: Create employee
+  name: Cart item
   type: http
-  seq: 3
+  seq: 2
 }
 
 post {
-  url: http://localhost:8000/api/employee
+  url: http://localhost:8000/api/cart
   body: formUrlEncoded
   auth: bearer
 }
@@ -19,7 +19,6 @@ auth:bearer {
 }
 
 body:form-urlencoded {
-  user_id: 2
-  joining_date: 1998-01-01 00:00:00
-  role: employee
+  product_id: 1
+  quantity: 1
 }
