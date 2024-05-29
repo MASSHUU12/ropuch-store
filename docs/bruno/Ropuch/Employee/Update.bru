@@ -1,11 +1,11 @@
 meta {
-  name: Create cart item
+  name: Update
   type: http
-  seq: 2
+  seq: 4
 }
 
-post {
-  url: http://localhost:8000/api/cart
+put {
+  url: http://localhost:8000/api/employee/8
   body: formUrlEncoded
   auth: bearer
 }
@@ -19,6 +19,7 @@ auth:bearer {
 }
 
 body:form-urlencoded {
-  product_id: 1
-  quantity: 1
+  user_id: 2
+  joining_date: 1998-01-01 00:00:00
+  role: manager
 }

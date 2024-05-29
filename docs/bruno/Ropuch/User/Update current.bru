@@ -1,21 +1,17 @@
 meta {
-  name: Update user
+  name: Update current
   type: http
-  seq: 4
+  seq: 5
 }
 
 put {
-  url: http://localhost:8000/api/user/5
+  url: http://localhost:8000/api/user
   body: formUrlEncoded
   auth: bearer
 }
 
 headers {
   Accept: application/json
-}
-
-auth:bearer {
-  token: 3|0eWXijHUpSsSPE8W82kCA7ZrkGAu0l5z8S2k5XVvc2fb7cbe
 }
 
 body:form-urlencoded {

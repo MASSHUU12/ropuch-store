@@ -1,13 +1,18 @@
 meta {
-  name: Show user order
+  name: Orders
   type: http
-  seq: 2
+  seq: 4
 }
 
 get {
-  url: http://localhost:8000/api/user/order/1
+  url: http://localhost:8000/api/orders?page=1&limit=16
   body: none
   auth: bearer
+}
+
+query {
+  page: 1
+  limit: 16
 }
 
 headers {
